@@ -1,5 +1,8 @@
 # Ex-4 Rail-Fence-Program
 
+## NAME : YUGABHARATHI T
+## REG.NO : 212224040375
+
 # IMPLEMENTATION OF RAIL FENCE – ROW & COLUMN TRANSFORMATION TECHNIQUE
 
 # AIM:
@@ -19,7 +22,43 @@ STEP-4: Arrange the characters of the keyword in sorted order and the correspond
 STEP-5: Read the characters row wise or column wise in the former order to get the cipher text.
 
 # PROGRAM
+```
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char text[100], rail[10][100];
+    int i, j, len, rails;
+    int row = 0, dir = 1;
+    printf("Enter the plain text: ");
+    scanf("%s", text);
+    printf("Enter number of rails: ");
+    scanf("%d", &rails);
+    len = strlen(text);
+    for (i = 0; i < rails; i++)
+        for (j = 0; j < len; j++)
+            rail[i][j] = ' ';
+    for (i = 0; i < len; i++) {
+        rail[row][i] = text[i];
+        if (row == 0)
+            dir = 1;
+        else if (row == rails - 1)
+            dir = -1;
+        row += dir;
+    }
+    printf("Cipher text/Encrypted text: ");
+    for (i = 0; i < rails; i++) {
+        for (j = 0; j < len; j++) {
+            if (rail[i][j] != ' ')
+                printf("%c", rail[i][j]);
+        }
+    }
+}
+
+```
 
 # OUTPUT
+<img width="1471" height="928" alt="image" src="https://github.com/user-attachments/assets/76958d9c-15f0-412a-b9fe-ab8e6f012f7f" />
+
 
 # RESULT
+The Rail Fence Transposition Cipher was successfully implemented using C and the ciphertext was generated correctly for the given plaintext and number of rails.
